@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inder&display=swap');
+
+:root {
+  --text-color: #edf0f1;
+  --kumera-color: #946520;
+}
+
+* {
+ background-image: url(../img/background.jpg);
+ background-position: center;
+ background-size: cover;
+ box-sizing: border-box;
+ margin: 0;
+  padding: 0;
+ font-family: 'Inder', sans-serif;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+li, a, button {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.title {
+  color: var(--text-color);
+  font-family: 'Irish Grover', cursive;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+.nav-links {
+  list-style: none;
+}
