@@ -39,11 +39,20 @@ button {
   font-family: 'Irish Grover', cursive;
 }
 
+h1 {
+  font-size: 80px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 10%;
+  margin-bottom: 30px;
 }
 
 .nav-links {
@@ -79,6 +88,9 @@ footer {
 .hat-container {
   padding: 30px 10%;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .hat-img {
@@ -95,8 +107,71 @@ footer {
   background-color: var(--kumera-color);
   padding: 15px;
   float: right;
-    display: flex;
-    align-items: center;
-    word-break:break-all;
-    margin: 0 0 1em 1em;
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+  margin: 0 0 1em 1em;
+}
+
+
+
+.books {
+  display: inline-flex;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  padding: 30px 30px 30px 30px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+  margin-left: 45px;
+  margin-bottom: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.books:hover {
+  transform: scale(1.02);
+}
+
+.facefront {
+  position: relative;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.facefront h3 {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  padding: 10px;
+  color: white;
+  background: var(--kumera-color);
+  text-align: center;
+}
+
+.facefront:hover {
+  color: blue;
+}
+
+.modal {
+  color: white;
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 500px;
+  left: auto;
+  z-index: 99;
+  background-color: #333;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.modal-btn {
+  color: black;
 }
