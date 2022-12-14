@@ -11,3 +11,7 @@
 export const getBooks = (data) => {
   return data.books;
 }
+
+export const getCharacters= (data) => {
+  return data.characters;
+}
