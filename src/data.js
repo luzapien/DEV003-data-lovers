@@ -31,7 +31,7 @@ export const getSpells = (data) => {
   return data.spells;
 }
 
-export const searchSpellsByLetter = (letter, spells) => {
+export const searchSpellsByLetter = (letter, spells,) => {
   const filteredSpells = spells.filter((spell) => spell.name.toLowerCase().startsWith(letter));
   return filteredSpells;
 }

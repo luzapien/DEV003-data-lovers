@@ -175,6 +175,7 @@ const showSpellsLetters = () => {
     letter.addEventListener("click", function () {
       window.location = document.URL + '?search=' + letter.id;
     });
+
   }
 }
 
@@ -183,23 +184,22 @@ const showSpellsByLetter = (filteredSpells) => {
   for (let i = 0; i < filteredSpells.length; i++) {
     const spell = filteredSpells[i];
     const spellName = document.createElement("h2");
-    const spellPronunciation = document.createElement("h3");
-    const spellDescription = document.createElement("h3");
-    const spellMention = document.createElement("h3");
+    const spellsInformation = document.createElement("div");
     spellName.innerText = spell.name;
-    spellPronunciation.innerText = "🌠Pronunciation: " +  spell.pronunciation;
-    spellDescription.innerText = " 🌠Description: " + spell.description;
-    spellMention.innerText = "🌠Mention: " + spell.mention;
+    if (spell.pronunciation !== null) {
+      spellsInformation.innerHTML = "<p>🧙‍♂️Pronunciation: " + spell.pronunciation + '</p>';
+    }
+    if (spell.description !== null) {
+      spellsInformation.innerHTML += "<p>🌠Description: " + spell.description + '</p>';
+    }
+    if (spell.mention !== null) {
+      spellsInformation.innerHTML += "<p>🔤Mention: " + spell.mention + '</p>';
+    }
     spellName.className = "spell-name";
-    spellPronunciation.className = "spell-style";
-    spellDescription.className = "spell-style";
-    spellMention.className = "spell-style";
+    spellsInformation.className = "spell-style";
     spellsContainer.appendChild(spellName);
-    spellsContainer.appendChild(spellPronunciation);
-    spellsContainer.appendChild(spellDescription);
-    spellsContainer.appendChild(spellMention);
+    spellsContainer.appendChild(spellsInformation);
   }
-  console.log(filteredSpells)
 }
 
 const spellsNotFound = (searchParam) => {
@@ -211,7 +211,6 @@ const spellsNotFound = (searchParam) => {
 const handleSpells = (searchParam) => {
   const spells = getSpells(data);
   const filteredSpells = searchSpellsByLetter(searchParam, spells)
-
   if (filteredSpells.length === 0) {
     spellsNotFound(searchParam);
   } else {
@@ -230,4 +229,5 @@ if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data
   } else {
     showSpellsLetters()
   }
+
 }
