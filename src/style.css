@@ -163,7 +163,7 @@ a:hover {
   display: none;
   align-items: center;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color:rgba(0, 0, 0, 0.85);
   height: 100%;
   width: 100%;
   z-index: 99;
