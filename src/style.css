@@ -19,7 +19,6 @@ body {
   background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -126,21 +125,20 @@ a:hover {
 .modal-container {
   display: none;
   align-items: center;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.85);
-  border-radius: 10px;
-  height: 80%;
-  width: 70%;
-  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
 }
 
 .modal {
   color: white;
   width: 500px;
   background-color: var(--kumera-color);
-  margin: 180px;
+  margin: 0 auto;
   padding: 20px;
-  position: absolute;
+  position: relative;
   border: 1px solid var(--kumera-color);
 }
 
@@ -201,11 +199,7 @@ a:hover {
 }
 
 .sort-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-direction: row;
-  margin: 0 auto;
+  text-align: center;
 }
 
 .order-button {
@@ -403,7 +397,7 @@ iframe{
   font-size: 14px;
 }
 
-.contenedor .contenido .left button {
+.contenedor .contenido .left .start-btn {
   display: inline-block;
   border: none;
   background-color: transparent;
@@ -416,7 +410,7 @@ iframe{
   cursor: pointer;
 }
 
-.contenedor .contenido .left button:hover {
+.contenedor .contenido .left .start-btn:hover {
   background-color: var(--kumera-color);
   color: #fff;
 }

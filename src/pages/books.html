@@ -9,35 +9,37 @@
 </head>
 
 <body>
-<section class="contenedor">
-  <div id="root">
-    <header>
-      <h2 class="title">Books</h2>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../pages/characters.html">Characters</a></li>
-          <li><a href="../pages/spells.html">Spells</a></li>
-        </ul>
-      </nav>
-    </header>
+  <section class="contenedor">
+    <div id="root">
+      <header>
+        <h2 class="title">Books</h2>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/characters.html">Characters</a></li>
+            <li><a href="../pages/spells.html">Spells</a></li>
+          </ul>
+        </nav>
+      </header>
 
-    <div id="modalContainer" class="modal-container">
-      <div class="modal">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDescription" class="modal-description"></p>
-        <span id="modalAuthor"></span>
-        <span id="modalReleaseDay"></span>
-        <button id="modalCloseBtn" class="modal-btn">X</button>
-      </div>
+      <main id="booksContainer">
+      </main>
+
     </div>
+  </section>
 
-    <main id="booksContainer">
-    </main>
 
+  <div id="modalContainer" class="modal-container">
+    <div class="modal">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription" class="modal-description"></p>
+      <span id="modalAuthor"></span>
+      <span id="modalReleaseDay"></span>
+      <button id="modalCloseBtn" class="modal-btn">X</button>
+    </div>
   </div>
-</section>
   <script src="../main.js" type="module"></script>
-<footer></footer>
+  <footer></footer>
 </body>
+
 </html>
