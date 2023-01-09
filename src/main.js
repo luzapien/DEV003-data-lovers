@@ -198,6 +198,7 @@ if (location.pathname === '/pages/characters' || location.pathname === '/DEV003-
   carousel()
 }
 
+
 const showSpellsLetters = () => {
   const letters = document.getElementById("lettersContainer");
   const spellLetters = letters.children;
@@ -206,7 +207,6 @@ const showSpellsLetters = () => {
     letter.addEventListener("click", function () {
       window.location = document.URL + '?search=' + letter.id;
     });
-
   }
 }
 
@@ -239,6 +239,7 @@ const spellsNotFound = (searchParam) => {
   spellNotFound.style.display = "block";
 }
 
+
 const handleSpells = (searchParam) => {
   const spells = getSpells(data);
   const filteredSpells = searchSpellsByLetter(searchParam, spells)
@@ -253,6 +254,7 @@ if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data
   const letters = document.getElementById("lettersContainer");
   const params = (new URL(document.location)).searchParams;
   const searchParam = params.get('search');
+
 
   if (searchParam) {
     letters.style.display = "none";
