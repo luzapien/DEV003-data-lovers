@@ -166,6 +166,8 @@ if (location.pathname === '/pages/characters' || location.pathname === '/DEV003-
   showCharacters()
   carousel()
 }
+
+
 const showSpellsLetters = () => {
   const letters = document.getElementById("lettersContainer");
   const spellLetters = letters.children;
@@ -174,10 +176,14 @@ const showSpellsLetters = () => {
     letter.addEventListener("click", function () {
       window.location = document.URL + '?search=' + letter.id;
     });
-  
   }
 }
   
+
+
+  }
+}
+
 const showSpellsByLetter = (filteredSpells) => {
   const spellsContainer = document.getElementById("spellsContainer");
   for (let i = 0; i < filteredSpells.length; i++) {
@@ -200,13 +206,14 @@ const showSpellsByLetter = (filteredSpells) => {
     spellsContainer.appendChild(spellsInformation);
   }
 }
-  
+
 const spellsNotFound = (searchParam) => {
   const spellNotFound = document.getElementById("spellsNotFound");
   spellNotFound.innerText = "Spells not found with letter: " + searchParam.toUpperCase();
   spellNotFound.style.display = "block";
 }
   
+
 const handleSpells = (searchParam) => {
   const spells = getSpells(data);
   const filteredSpells = searchSpellsByLetter(searchParam, spells)
@@ -216,18 +223,23 @@ const handleSpells = (searchParam) => {
     showSpellsByLetter(filteredSpells);
   }
 }
-  
+
 if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data-lovers/pages/spells.html') {
   const letters = document.getElementById("lettersContainer");
   const params = (new URL(document.location)).searchParams;
   const searchParam = params.get('search');
-  
+
+
   if (searchParam) {
     letters.style.display = "none";
     handleSpells(searchParam)
   } else {
     showSpellsLetters()
   }
-  
+
 }
   
+
+
+}
+
