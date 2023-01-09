@@ -1,4 +1,4 @@
-import { getBooks, getCharacters, searchCharacterByName } from './data.js';
+import { getBooks, getCharacters, searchCharacterByName, searchSpellsByLetter, getSpells  } from './data.js';
 
 // import data from './data/lol/lol.js';
 //import data from './data/pokemon/pokemon.js';
@@ -167,6 +167,7 @@ if (location.pathname === '/pages/characters' || location.pathname === '/DEV003-
   carousel()
 }
 
+
 const showSpellsLetters = () => {
   const letters = document.getElementById("lettersContainer");
   const spellLetters = letters.children;
@@ -175,6 +176,10 @@ const showSpellsLetters = () => {
     letter.addEventListener("click", function () {
       window.location = document.URL + '?search=' + letter.id;
     });
+  }
+}
+  
+
 
   }
 }
@@ -207,6 +212,7 @@ const spellsNotFound = (searchParam) => {
   spellNotFound.innerText = "Spells not found with letter: " + searchParam.toUpperCase();
   spellNotFound.style.display = "block";
 }
+  
 
 const handleSpells = (searchParam) => {
   const spells = getSpells(data);
@@ -223,6 +229,7 @@ if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data
   const params = (new URL(document.location)).searchParams;
   const searchParam = params.get('search');
 
+
   if (searchParam) {
     letters.style.display = "none";
     handleSpells(searchParam)
@@ -231,3 +238,8 @@ if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data
   }
 
 }
+  
+
+
+}
+
