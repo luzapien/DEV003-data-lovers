@@ -163,7 +163,7 @@ a:hover {
   display: none;
   align-items: center;
   position: fixed;
-  background-color:rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.85);
   height: 100%;
   width: 100%;
   z-index: 99;
@@ -225,13 +225,28 @@ a:hover {
   color: #edf0f1;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 5%;
+  margin-bottom: 20px;
 }
 
 .search-btn:hover {
   background-color: white;
   color: #946520;
   cursor: pointer;
+}
+
+.sort-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.order-button {
+  height: 50px;
+  width: 60px;
+  cursor: pointer;
+  color: black;
 }
 
 .search {
@@ -241,7 +256,7 @@ a:hover {
   color: #946520;
   margin-top: 20px;
   margin-left: 40%;
-  margin-bottom: 5%;
+  margin-bottom: 20px;
   width: 216px;
 }
 
@@ -350,13 +365,13 @@ iframe{
 }
 
 
-.spell-style{
-color:#946520;
-background-color: white;
-border-radius: 10px;
-padding: 20px;
-margin-left: 30px;
-margin-right: 30px;
+.spell-style {
+  color: #946520;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
 
 }
 

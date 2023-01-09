@@ -1,12 +1,16 @@
-import { getBooks, getCharacters, searchCharacterByName, getSpells, searchSpellsByLetter } from './data.js';
+import {
+  getBooks,
+  getCharacters,
+  searchCharacterByName,
+  getSpells,
+  searchSpellsByLetter,
+  charactersOrder
+} from './data.js';
 
 // import data from './data/lol/lol.js';
 //import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 import data from "./data/harrypotter/data.js";
-
-
-//console.log(data.spells);
 
 const showModalBooks = (title, description, author, releaseDay) => {
   const modalContainer = document.getElementById("modalContainer");
@@ -20,7 +24,6 @@ const showModalBooks = (title, description, author, releaseDay) => {
   modalDescription.innerText = description;
   modalAuthor.innerText = author;
   modalReleaseDay.innerText = releaseDay;
-
   modalContainer.style.display = "flex"
 
   modalCloseBtn.addEventListener("click", function () {
@@ -77,7 +80,6 @@ const showModalCharacters = (name, birth, death, species, ancestry, gender, hous
   modalAncestry.innerText = ancestry;
   modalGender.innerText = gender;
   modalHouse.innerText = house;
-
   modalContainer.style.display = "flex"
 
   modalCloseBtn.addEventListener("click", function () {
@@ -87,8 +89,22 @@ const showModalCharacters = (name, birth, death, species, ancestry, gender, hous
 
 const showCharacters = () => {
   const characters = getCharacters(data);
+  const orderAZBtn = document.getElementById('orderAZBtn');
+  const orderZABtn = document.getElementById('orderZABtn');
   const charactersContainer = document.getElementById("charactersContainer");
   const form = document.getElementById("charactersSearchForm");
+  const searchBtn = document.getElementById("searchBtn");
+  let sortOrder = 'A-Z';
+
+  orderAZBtn.addEventListener('click', function () {
+    sortOrder = 'A-Z';
+    searchBtn.click();
+  });
+
+  orderZABtn.addEventListener('click', function () {
+    sortOrder = 'Z-A';
+    searchBtn.click();
+  })
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -97,20 +113,35 @@ const showCharacters = () => {
     const charactersFound = searchCharacterByName(searchVal, characters);
 
     if (charactersFound.length > 0) {
-      charactersFound.forEach(function (character) {
+      const sortedCharacters = charactersOrder(charactersFound, sortOrder);
+
+      if (sortOrder === 'A-Z') {
+        orderAZBtn.disabled = true;
+        orderZABtn.disabled = false;
+      } else if (sortOrder === 'Z-A') {
+        orderAZBtn.disabled = false;
+        orderZABtn.disabled = true;
+      }
+
+      sortedCharacters.forEach(function (character) {
         const nameEl = document.createElement('h3');
         nameEl.className = "character-name";
         nameEl.innerText = character.name;
         charactersContainer.appendChild(nameEl);
         nameEl.addEventListener("click", function () {
-          showModalCharacters(character.name, character.birth, character.death, character.species, character.ancestry, character.gender, character.house);
-        })
+          showModalCharacters(
+            character.name, character.birth, character.death,
+            character.species, character.ancestry, character.gender, character.house
+          );
+        });
       });
     } else {
       const notFoundEl = document.createElement('h3');
       notFoundEl.className = "character-name";
       notFoundEl.innerText = "We have not found any character with: " + '"' + searchVal + '"';
       charactersContainer.appendChild(notFoundEl);
+      orderAZBtn.disabled = true;
+      orderZABtn.disabled = true;
     }
   })
 }
@@ -229,5 +260,4 @@ if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data
   } else {
     showSpellsLetters()
   }
-
 }
