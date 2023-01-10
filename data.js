@@ -27,6 +27,21 @@ export const searchCharacterByName = (name, characters) => {
   return charactersFound;
 }
 
+export const charactersOrder = (characters, order) => {
+  const orderAZ = characters.sort(function (a, b) {
+    if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1 }
+    if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1 }
+  });
+
+  if (order === 'A-Z') {
+    return orderAZ;
+  } else if (order === 'Z-A') {
+    return orderAZ.reverse();
+  }
+
+  return orderAZ;
+}
+
 export const getSpells = (data) => {
   return data.spells;
 }

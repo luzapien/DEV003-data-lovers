@@ -1,12 +1,16 @@
-import { getBooks, getCharacters, searchCharacterByName, getSpells, searchSpellsByLetter } from './data.js';
+import {
+  getBooks,
+  getCharacters,
+  searchCharacterByName,
+  getSpells,
+  searchSpellsByLetter,
+  charactersOrder
+} from './data.js';
 
 // import data from './data/lol/lol.js';
 //import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 import data from "./data/harrypotter/data.js";
-
-
-//console.log(data.spells);
 
 const showModalBooks = (title, description, author, releaseDay) => {
   const modalContainer = document.getElementById("modalContainer");
@@ -20,7 +24,6 @@ const showModalBooks = (title, description, author, releaseDay) => {
   modalDescription.innerText = description;
   modalAuthor.innerText = author;
   modalReleaseDay.innerText = releaseDay;
-
   modalContainer.style.display = "flex"
 
   modalCloseBtn.addEventListener("click", function () {
@@ -77,7 +80,6 @@ const showModalCharacters = (name, birth, death, species, ancestry, gender, hous
   modalAncestry.innerText = ancestry;
   modalGender.innerText = gender;
   modalHouse.innerText = house;
-
   modalContainer.style.display = "flex"
 
   modalCloseBtn.addEventListener("click", function () {
@@ -87,8 +89,22 @@ const showModalCharacters = (name, birth, death, species, ancestry, gender, hous
 
 const showCharacters = () => {
   const characters = getCharacters(data);
+  const orderAZBtn = document.getElementById('orderAZBtn');
+  const orderZABtn = document.getElementById('orderZABtn');
   const charactersContainer = document.getElementById("charactersContainer");
   const form = document.getElementById("charactersSearchForm");
+  const searchBtn = document.getElementById("searchBtn");
+  let sortOrder = 'A-Z';
+
+  orderAZBtn.addEventListener('click', function () {
+    sortOrder = 'A-Z';
+    searchBtn.click();
+  });
+
+  orderZABtn.addEventListener('click', function () {
+    sortOrder = 'Z-A';
+    searchBtn.click();
+  })
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -97,20 +113,35 @@ const showCharacters = () => {
     const charactersFound = searchCharacterByName(searchVal, characters);
 
     if (charactersFound.length > 0) {
-      charactersFound.forEach(function (character) {
+      const sortedCharacters = charactersOrder(charactersFound, sortOrder);
+
+      if (sortOrder === 'A-Z') {
+        orderAZBtn.disabled = true;
+        orderZABtn.disabled = false;
+      } else if (sortOrder === 'Z-A') {
+        orderAZBtn.disabled = false;
+        orderZABtn.disabled = true;
+      }
+
+      sortedCharacters.forEach(function (character) {
         const nameEl = document.createElement('h3');
         nameEl.className = "character-name";
         nameEl.innerText = character.name;
         charactersContainer.appendChild(nameEl);
         nameEl.addEventListener("click", function () {
-          showModalCharacters(character.name, character.birth, character.death, character.species, character.ancestry, character.gender, character.house);
-        })
+          showModalCharacters(
+            character.name, character.birth, character.death,
+            character.species, character.ancestry, character.gender, character.house
+          );
+        });
       });
     } else {
       const notFoundEl = document.createElement('h3');
       notFoundEl.className = "character-name";
       notFoundEl.innerText = "We have not found any character with: " + '"' + searchVal + '"';
       charactersContainer.appendChild(notFoundEl);
+      orderAZBtn.disabled = true;
+      orderZABtn.disabled = true;
     }
   })
 }
@@ -167,6 +198,7 @@ if (location.pathname === '/pages/characters' || location.pathname === '/DEV003-
   carousel()
 }
 
+
 const showSpellsLetters = () => {
   const letters = document.getElementById("lettersContainer");
   const spellLetters = letters.children;
@@ -183,23 +215,22 @@ const showSpellsByLetter = (filteredSpells) => {
   for (let i = 0; i < filteredSpells.length; i++) {
     const spell = filteredSpells[i];
     const spellName = document.createElement("h2");
-    const spellPronunciation = document.createElement("h3");
-    const spellDescription = document.createElement("h3");
-    const spellMention = document.createElement("h3");
+    const spellsInformation = document.createElement("div");
     spellName.innerText = spell.name;
-    spellPronunciation.innerText = "🌠Pronunciation: " +  spell.pronunciation;
-    spellDescription.innerText = " 🌠Description: " + spell.description;
-    spellMention.innerText = "🌠Mention: " + spell.mention;
+    if (spell.pronunciation !== null) {
+      spellsInformation.innerHTML = "<p>🧙‍♂️Pronunciation: " + spell.pronunciation + '</p>';
+    }
+    if (spell.description !== null) {
+      spellsInformation.innerHTML += "<p>🌠Description: " + spell.description + '</p>';
+    }
+    if (spell.mention !== null) {
+      spellsInformation.innerHTML += "<p>🔤Mention: " + spell.mention + '</p>';
+    }
     spellName.className = "spell-name";
-    spellPronunciation.className = "spell-style";
-    spellDescription.className = "spell-style";
-    spellMention.className = "spell-style";
+    spellsInformation.className = "spell-style";
     spellsContainer.appendChild(spellName);
-    spellsContainer.appendChild(spellPronunciation);
-    spellsContainer.appendChild(spellDescription);
-    spellsContainer.appendChild(spellMention);
+    spellsContainer.appendChild(spellsInformation);
   }
-  console.log(filteredSpells)
 }
 
 const spellsNotFound = (searchParam) => {
@@ -208,10 +239,10 @@ const spellsNotFound = (searchParam) => {
   spellNotFound.style.display = "block";
 }
 
+
 const handleSpells = (searchParam) => {
   const spells = getSpells(data);
   const filteredSpells = searchSpellsByLetter(searchParam, spells)
-
   if (filteredSpells.length === 0) {
     spellsNotFound(searchParam);
   } else {
@@ -223,6 +254,7 @@ if (location.pathname === '/pages/spells' || location.pathname === '/DEV003-data
   const letters = document.getElementById("lettersContainer");
   const params = (new URL(document.location)).searchParams;
   const searchParam = params.get('search');
+
 
   if (searchParam) {
     letters.style.display = "none";
