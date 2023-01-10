@@ -1,3 +1,65 @@
+#README
+
+Harry Potter/Data-lovers
+
+Inicio de elaboración del proyecto :14 de Diciembre del 2023
+
+Proceso del diseño:
+
+Se comenzó con la elaboración de un prototipo de baja fidelidad,el cual
+fue un boceto hecho a mano.Después se mejoró el prototipo y se
+plasmó en figma.
+
+Posteriormente se elaboró una encuesta mediante la herramienta de google
+con el fin de desarrollar nuestras historias de usuario, dando como
+resultado las siguientes:
+
+Historia de usuario 1.- El usuario,fanático de Harry Potter desea
+conocer cuántos libro publicados hay y su respectiva sinopsis, por lo cual
+se realizó un apartado de libros en dónde se muestran los titulos
+de los libros publicados y al presionar sobre cada título aparece una modal con su
+respectiva información.
+
+Historia de usuario 2.-El usuario quiere poder buscar información
+sobre los personajes para aprender más sobre ellos, por lo que se
+realizó un buscador en el cual podrá ingresar el nombre de los personajes
+y la información se mostrará en CARDS.
+
+Historia de usuario 3.- El usuario quiere poder buscar hechizos según el orden
+alfabetico para aprender más sobre ellos, por lo que dichos hechizos
+se ordenarán por letras y la información será mostrada en CARDS.
+
+Después de haber cumplido con los criterios de aceptación de las historias 
+de usuario,se elaboraron los tests.
+
+Se procedió a cambiar el diseño de la interfaz porque según comentarios de
+algunos usuarios los colores del primer diseño resultaban muy oscuros
+y la página principal no generaba interés para seguir navegando.
+
+El flujo de la elaboración del proyecto fue el siguiente:
++ Elaboración del trello para la organización.
++Elaboración del prototipo de baja fidelidad.
++Elaboración del prototipo en figma el cual fue modificado dos veces, la primera fue debido
+ a que la data no contaba con imagenes por lo que el diseño se vio modificad, la segunda
+fue debido a que algunos usuarios encontraron el primer diseño poco atractivo)
++Elaboración de encuestas para realizar historias de usuarios.
++Maquetación, CSS, funcionalidades en JavaScript y elaboración de tests unitarios de acuerdo a 
+cada historia de usuario.
+
++Implementación de nuevo diseño e implementación de responsive.
+
+Bloqueos que se presentaron durante el proyecto:
++ Primer acercamiento a Figma, se requirió de un día para poder entender como funcionaba y plasmar el diseño.
++ GitHub : GitHub fue un bloqueo constante en diferentes etapas del proyecto,  ya que tardamos en comprender el flujo del trabajo colaborativo.
++ Rediseño: Ajustar todo a un nuevo diseño.
++ test unitarios : No se  tenía claro como iniciar los tests, después se tuvo un error que no sabíamos como corregirlo pero lo resolvimos cuando asistimos al test-camp.
++ Responsive: No teníamos muy claro como proyectar los estilos para cada página.
+
+Todos los bloqueos anteriores fueron resueltos mediante documentación, pidiendo OH, preguntando a compañeras e incluso conocidos con conocimientos en programación y asistiendo a
+los espacios de git-camp y test-camp.
+
+
+
 # Data Lovers
 
 ## Índice
